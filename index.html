@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="th" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nong Axty Dev | Student Portfolio - วสุรมย์ บุญประกอบ</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Prompt & Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome & Lucide Icons CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-blue': '#3B82F6',
+                        'brand-purple': '#8B5CF6',
+                        'brand-pink': '#EC4899',
+                        'brand-sky': '#06B6D4',
+                        'bg-soft': '#F8FAFC',
+                    },
+                    fontFamily: {
+                        sans: ['Prompt', 'Poppins', 'sans-serif'],
+                        en: ['Poppins', 'Prompt', 'sans-serif'],
+                    },
+                    borderRadius: {
+                        '4xl': '2.5rem',
+                    },
+                    boxShadow: {
+                        'glow-pink': '0 10px 30px -10px rgba(236, 72, 153, 0.3)',
+                        'glow-purple': '0 10px 30px -10px rgba(139, 92, 246, 0.3)',
+                        'glow-blue': '0 10px 30px -10px rgba(59, 130, 246, 0.3)',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            font-family: 'Prompt', 'Poppins', sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
+            overflow-x: hidden;
+        }
+
+        /* Glassmorphism utility */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+        }
+
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+        }
+
+        /* Floating Animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-12px) rotate(2deg); }
+        }
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { opacity: 0.6; transform: scale(1); }
+            50% { opacity: 0.9; transform: scale(1.05); }
+        }
+        .animate-glow {
+            animation: pulse-glow 6s ease-in-out infinite;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-sky-50 via-purple-50/50 to-pink-50/40 min-h-screen relative text-slate-800">
+
+    <!-- Background Decorative Blobs -->
+    <div class="fixed top-[-10%] left-[-10%] w-[500px] h-[500px] bg-brand-sky/20 rounded-full blur-3xl pointer-events-none -z-10 animate-glow"></div>
+    <div class="fixed top-[40%] right-[-10%] w-[600px] h-[600px] bg-brand-pink/15 rounded-full blur-3xl pointer-events-none -z-10 animate-glow" style="animation-delay: 2s;"></div>
+    <div class="fixed bottom-[-10%] left-[20%] w-[500px] h-[500px] bg-brand-purple/20 rounded-full blur-3xl pointer-events-none -z-10 animate-glow" style="animation-delay: 4s;"></div>
+
+    <!-- 3.1 Navigation (Minimal Logo + Links + CTA) -->
+    <header class="sticky top-0 z-50 transition-all duration-300 py-3" id="main-header">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="glass-nav rounded-2xl px-5 py-3 shadow-sm flex items-center justify-between">
+                <!-- Logo -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-blue via-brand-purple to-brand-pink p-[2px] shadow-md group-hover:rotate-6 transition-transform">
+                        <div class="w-full h-full bg-white rounded-[10px] flex items-center justify-center">
+                            <span class="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-brand-blue to-brand-pink text-lg font-en">AT</span>
+                        </div>
+                    </div>
+                    <div>
+                        <span class="font-bold text-lg font-en tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-slate-900 to-slate-700">NongAxty</span>
+                        <span class="text-xs px-2 py-0.5 ml-1.5 bg-pink-100 text-pink-600 font-semibold rounded-full border border-pink-200">DEV</span>
+                    </div>
+                </a>
+
+                <!-- Navigation Links -->
+                <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
+                    <a href="#about" class="text-slate-600 hover:text-brand-purple transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-brand-purple hover:after:w-full after:transition-all">About Me</a>
+                    <a href="#skills" class="text-slate-600 hover:text-brand-purple transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-brand-purple hover:after:w-full after:transition-all">Skills</a>
+                    <a href="#games" class="text-slate-600 hover:text-brand-purple transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-brand-purple hover:after:w-full after:transition-all">My Games</a>
+                    <a href="#contact" class="text-slate-600 hover:text-brand-purple transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-brand-purple hover:after:w-full after:transition-all">Contact</a>
+                </nav>
+
+                <!-- CTA Button -->
+                <div class="flex items-center gap-3">
+                    <a href="#games" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-brand-blue via-brand-purple to-brand-pink text-white font-medium text-sm shadow-md hover:shadow-glow-purple hover:scale-105 transition-all duration-300">
+                        <i class="fa-solid font-en fa-gamepad text-base"></i>
+                        <span>Play My Games</span>
+                    </a>
+                    
+                    <!-- Mobile Menu Button -->
+                    <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg text-slate-600 hover:bg-slate-100 focus:outline-none">
+                        <i class="fa-solid fa-bars text-xl" id="menu-icon"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Navigation Drawer -->
+            <div id="mobile-menu" class="hidden md:hidden mt-2 glass-card rounded-2xl p-5 shadow-xl flex flex-col gap-4 border border-slate-200">
+                <a href="#about" class="mobile-link text-slate-700 font-medium py-2 px-3 rounded-lg hover:bg-purple-50 hover:text-brand-purple">About Me</a>
+                <a href="#skills" class="mobile-link text-slate-700 font-medium py-2 px-3 rounded-lg hover:bg-purple-50 hover:text-brand-purple">Skills</a>
+                <a href="#games" class="mobile-link text-slate-700 font-medium py-2 px-3 rounded-lg hover:bg-purple-50 hover:text-brand-purple">My Games</a>
+                <a href="#contact" class="mobile-link text-slate-700 font-medium py-2 px-3 rounded-lg hover:bg-purple-50 hover:text-brand-purple">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 1. Split Hero (About Me) Section -->
+    <section id="about" class="pt-8 pb-16 md:pt-16 md:pb-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            
+            <!-- Left Side: Profile Card & Quick Info -->
+            <div class="lg:col-span-5 flex flex-col items-center">
+                <div class="relative group w-full max-w-md">
+                    <!-- Decorative Background Ring -->
+                    <div class="absolute -inset-1.5 bg-gradient-to-r from-brand-sky via-brand-purple to-brand-pink rounded-3xl blur-md opacity-75 group-hover:opacity-100 transition duration-500 animate-pulse"></div>
+                    
+                    <!-- Profile Card -->
+                    <div class="relative glass-card rounded-3xl p-6 sm:p-8 flex flex-col items-center text-center shadow-xl border border-white/80">
+                        <!-- Student Tag -->
+                        <div class="absolute top-4 right-4 bg-purple-100 text-brand-purple font-semibold text-xs px-3 py-1 rounded-full border border-purple-200 shadow-sm flex items-center gap-1.5">
+                            <span class="w-2 h-2 rounded-full bg-brand-purple animate-ping"></span>
+                            มัธยมศึกษาปีที่ 5
+                        </div>
+
+                        <!-- Profile Image Wrapper -->
+                        <div class="relative my-4">
+                            <div class="w-36 h-36 sm:w-44 sm:h-44 rounded-full p-1.5 bg-gradient-to-tr from-brand-blue via-brand-purple to-brand-pink shadow-lg">
+                                <img id="profile-img" 
+                                     src="https://lh3.googleusercontent.com/d/1RAf1wNqum5m2xDLsSPULVFZvDAC95ikt=w1000" 
+                                     alt="วสุรมย์ บุญประกอบ (น้อง อต.)" 
+                                     onerror="this.onerror=null; this.src='https://placehold.co/400x400/8B5CF6/FFFFFF?text=Nong+Axty';" 
+                                     class="w-full h-full object-cover rounded-full border-4 border-white shadow-inner transition-transform duration-500 group-hover:scale-105">
+                            </div>
+                            <div class="absolute bottom-1 right-2 bg-gradient-to-r from-amber-400 to-orange-500 text-white p-2.5 rounded-full shadow-md hover:scale-110 transition-transform" title="Game Developer">
+                                <i class="fa-solid fa-gamepad text-sm"></i>
+                            </div>
+                        </div>
+
+                        <!-- Name & Nickname -->
+                        <h1 class="text-2xl sm:text-3xl font-bold text-slate-800 tracking-tight mt-2">
+                            วสุรมย์ บุญประกอบ
+                        </h1>
+                        <p class="text-brand-purple font-semibold text-base sm:text-lg mb-3">
+                            (น้อง อต.) <span class="text-slate-400 text-sm font-normal">| ตี้ราม2</span>
+                        </p>
+
+                        <!-- Highlights Badge Row -->
+                        <div class="flex flex-wrap gap-2 justify-center my-2">
+                            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl bg-sky-50 text-sky-700 text-xs font-medium border border-sky-100">
+                                <i class="fa-solid fa-graduation-cap text-sky-500"></i> ม.5
+                            </span>
+                            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl bg-pink-50 text-pink-700 text-xs font-medium border border-pink-100">
+                                <i class="fa-solid fa-code text-pink-500"></i> Game Creator
+                            </span>
+                            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl bg-purple-50 text-purple-700 text-xs font-medium border border-purple-100">
+                                <i class="fa-solid fa-heart text-purple-500"></i> Creative Mind
+                            </span>
+                        </div>
+
+                        <!-- Future Goal Box -->
+                        <div class="w-full mt-4 p-4 rounded-2xl bg-gradient-to-r from-purple-50/80 via-pink-50/80 to-sky-50/80 border border-purple-100/80 text-left relative overflow-hidden">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-purple to-brand-pink text-white flex items-center justify-center shrink-0 shadow-md">
+                                    <i class="fa-solid fa-compass text-lg"></i>
+                                </div>
+                                <div>
+                                    <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider block">เป้าหมายในอนาคต</span>
+                                    <span class="text-sm font-bold text-slate-800 flex items-center gap-1.5">
+                                        ธรรมศาสตร์รังสิต 🎓
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Side: Narrative Intro & Hero Text -->
+            <div class="lg:col-span-7 flex flex-col gap-6">
+                
+                <!-- Tagline Badge -->
+                <div>
+                    <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/80 border border-purple-200 text-brand-purple font-semibold text-xs sm:text-sm shadow-sm">
+                        <i class="fa-solid fa-wand-magic-sparkles text-amber-500"></i> Student Portfolio & Game Showcase
+                    </span>
+                </div>
+
+                <!-- Main Heading -->
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 leading-tight">
+                    เปลี่ยนช่วงเวลา <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-blue via-brand-purple to-brand-pink">เรียนช่วงเช้า</span><br>
+                    ให้กลายเป็น <span class="underline decoration-wavy decoration-brand-pink/50">โลกแห่งเกมสุดมันส์!</span>
+                </h2>
+
+                <!-- Intro Description -->
+                <p class="text-slate-600 text-base sm:text-lg leading-relaxed bg-white/40 p-5 rounded-2xl border border-white/60">
+                    สวัสดีครับ! ผม <span class="font-semibold text-slate-800">วสุรมย์ บุญประกอบ (น้อง อต.)</span> นักเรียนชั้นมัธยมศึกษาปีที่ 5 ที่สนุกกับการเรียนรู้และหลงใหลในการสร้างสรรค์เกมดิจิทัล นำเอาไอเดียความคิดสร้างสรรค์จากห้องเรียนยามเช้า มาเนรมิตเป็นเกมที่เล่นสนุก ได้ทั้งความรู้และความบันเทิง! 🚀
+                </p>
+
+                <!-- Personality Tags Grid -->
+                <div>
+                    <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">Vibe & Personality</h3>
+                    <div class="flex flex-wrap gap-2.5">
+                        <span class="px-3.5 py-1.5 rounded-xl bg-sky-100/70 text-sky-800 font-medium text-xs sm:text-sm flex items-center gap-1.5 border border-sky-200">
+                            ☀️ สดใส
+                        </span>
+                        <span class="px-3.5 py-1.5 rounded-xl bg-pink-100/70 text-pink-800 font-medium text-xs sm:text-sm flex items-center gap-1.5 border border-pink-200">
+                            🎮 สนุกสนาน
+                        </span>
+                        <span class="px-3.5 py-1.5 rounded-xl bg-purple-100/70 text-purple-800 font-medium text-xs sm:text-sm flex items-center gap-1.5 border border-purple-200">
+                            🤝 เป็นมิตร
+                        </span>
+                        <span class="px-3.5 py-1.5 rounded-xl bg-indigo-100/70 text-indigo-800 font-medium text-xs sm:text-sm flex items-center gap-1.5 border border-indigo-200">
+                            ⚡ ทันสมัย
+                        </span>
+                        <span class="px-3.5 py-1.5 rounded-xl bg-emerald-100/70 text-emerald-800 font-medium text-xs sm:text-sm flex items-center gap-1.5 border border-emerald-200">
+                            🎨 สร้างสรรค์
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Action CTA Group -->
+                <div class="flex flex-wrap items-center gap-4 pt-2">
+                    <a href="#games" class="px-7 py-3.5 rounded-2xl bg-gradient-to-r from-brand-blue via-brand-purple to-brand-pink text-white font-semibold shadow-lg hover:shadow-glow-purple hover:-translate-y-0.5 transition-all flex items-center gap-2">
+                        <i class="fa-solid fa-gamepad"></i>
+                        <span>สำรวจผลงานเกม</span>
+                    </a>
+                    <a href="#contact" class="px-7 py-3.5 rounded-2xl bg-white text-slate-700 font-semibold border border-slate-200 shadow-sm hover:bg-slate-50 hover:border-slate-300 hover:-translate-y-0.5 transition-all flex items-center gap-2">
+                        <i class="fa-solid fa-paper-plane text-brand-purple"></i>
+                        <span>ติดต่อฉัน</span>
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Skills & Highlights (Bento Grid Pattern) -->
+    <section id="skills" class="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-10">
+            <span class="text-xs font-extrabold text-brand-purple uppercase tracking-widest px-3 py-1 rounded-full bg-purple-100 border border-purple-200">Skills & Abilities</span>
+            <h2 class="text-3xl sm:text-4xl font-bold text-slate-800 mt-3">ทักษะและความสามารถของผม</h2>
+            <p class="text-slate-500 text-sm sm:text-base mt-2 max-w-xl mx-auto">ผสมผสานระหว่างกิจกรรมที่ชอบ ความตั้งใจในการเรียน และทักษะการสร้างสรรค์</p>
+        </div>
+
+        <!-- Bento Grid Container -->
+        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5">
+            
+            <!-- Bento Box 1: Guitar Skill -->
+            <div class="md:col-span-2 glass-card rounded-3xl p-6 shadow-md hover:shadow-xl transition-all duration-300 border border-white/80 flex flex-col justify-between group bg-gradient-to-br from-white/90 via-purple-50/30 to-pink-50/40">
+                <div class="flex items-start justify-between">
+                    <div class="w-12 h-12 rounded-2xl bg-pink-500/10 text-pink-600 flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
+                        🎸
+                    </div>
+                    <span class="text-xs font-bold text-pink-600 bg-pink-100 px-3 py-1 rounded-full">Hobby & Music</span>
+                </div>
+                <div class="my-4">
+                    <h3 class="text-xl font-bold text-slate-800 mb-1">เล่นกีต้าร์ (Guitar Enthusiast)</h3>
+                    <p class="text-slate-600 text-sm">ชอบเล่นดนตรีในเวลาว่าง เพิ่มความผ่อนคลายและช่วยสร้างแรงบันดาลใจใหม่ๆ ในการออกแบบเกมและการคิดทำนอง</p>
+                </div>
+                <div class="space-y-2">
+                    <div class="flex justify-between text-xs font-semibold text-slate-600">
+                        <span>Acoustic & Electric</span>
+                        <span>85%</span>
+                    </div>
+                    <div class="w-full bg-slate-100 rounded-full h-2 overflow-hidden">
+                        <div class="bg-gradient-to-r from-pink-400 to-rose-500 h-2 rounded-full w-[85%]"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bento Box 2: Sports -->
+            <div class="glass-card rounded-3xl p-6 shadow-md hover:shadow-xl transition-all duration-300 border border-white/80 flex flex-col justify-between group bg-gradient-to-br from-white/90 via-sky-50/30 to-blue-50/40">
+                <div class="flex items-start justify-between">
+                    <div class="w-12 h-12 rounded-2xl bg-sky-500/10 text-sky-600 flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
+                        ⚽
+                    </div>
+                    <span class="text-xs font-bold text-sky-600 bg-sky-100 px-2.5 py-1 rounded-full">Active</span>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold text-slate-800 mb-1">เล่นกีฬา</h3>
+                    <p class="text-slate-600 text-xs">เสริมสร้างพลังงาน ทำกิจกรรมกลางแจ้ง ทำงานเป็นทีมได้อย่างดีเยี่ยม</p>
+                </div>
+                <div class="pt-3 border-t border-slate-100 flex items-center gap-2 text-xs text-sky-700 font-medium">
+                    <i class="fa-solid fa-bolt"></i> Teamwork & Energy
+                </div>
+            </div>
+
+            <!-- Bento Box 3: Academic -->
+            <div class="glass-card rounded-3xl p-6 shadow-md hover:shadow-xl transition-all duration-300 border border-white/80 flex flex-col justify-between group bg-gradient-to-br from-white/90 via-amber-50/30 to-yellow-50/40">
+                <div class="flex items-start justify-between">
+                    <div class="w-12 h-12 rounded-2xl bg-amber-500/10 text-amber-600 flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
+                        📚
+                    </div>
+                    <span class="text-xs font-bold text-amber-600 bg-amber-100 px-2.5 py-1 rounded-full">Academic</span>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold text-slate-800 mb-1">เรียนพอได้</h3>
+                    <p class="text-slate-600 text-xs">เข้าใจตรรกะ ตัวเลข การแก้ปัญหา สามารถนำความรู้ในห้องเรียนมาประยุกต์ทำเกมได้จริง</p>
+                </div>
+                <div class="pt-3 border-t border-slate-100 flex items-center gap-2 text-xs text-amber-700 font-medium">
+                    <i class="fa-solid fa-brain"></i> Logic & Math Skill
+                </div>
+            </div>
+
+            <!-- Bento Box 4: Game Dev Core (Wide Bottom) -->
+            <div class="md:col-span-3 lg:col-span-4 glass-card rounded-3xl p-6 sm:p-8 shadow-md hover:shadow-xl transition-all duration-300 border border-white/80 bg-gradient-to-r from-purple-500/10 via-pink-500/10 to-sky-500/10">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
+                    <div class="md:col-span-2">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-100 text-purple-700 text-xs font-bold mb-3">
+                            <i class="fa-solid fa-laptop-code"></i> Main Skill Focus
+                        </div>
+                        <h3 class="text-xl sm:text-2xl font-bold text-slate-800 mb-2">Game Design & Interactive Storytelling</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            เรียนรู้การเขียนโปรแกรม ออกแบบกติกาเกม และวางโครงสร้างความสนุกตั้งแต่เกมแนว Simulaton ปลูกผัก ร้านอาหาร ไปจนถึงเกมการศึกษาแนว Educational Puzzle!
+                        </p>
+                    </div>
+                    <div class="flex flex-col gap-2">
+                        <div class="flex items-center gap-3 p-3 rounded-2xl bg-white/80 border border-purple-100 shadow-sm">
+                            <i class="fa-solid fa-seedling text-emerald-500 text-lg"></i>
+                            <span class="text-xs font-bold text-slate-700">Simulation Game Logic</span>
+                        </div>
+                        <div class="flex items-center gap-3 p-3 rounded-2xl bg-white/80 border border-purple-100 shadow-sm">
+                            <i class="fa-solid fa-utensils text-orange-500 text-lg"></i>
+                            <span class="text-xs font-bold text-slate-700">Time Management Mechanics</span>
+                        </div>
+                        <div class="flex items-center gap-3 p-3 rounded-2xl bg-white/80 border border-purple-100 shadow-sm">
+                            <i class="fa-solid fa-shapes text-brand-purple text-lg"></i>
+                            <span class="text-xs font-bold text-slate-700">Educational Gamification</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 3.2 My Games Section (Featured Card + Card Grid) -->
+    <section id="games" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Section Title & Filter Tabs -->
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
+            <div>
+                <span class="text-xs font-extrabold text-brand-pink uppercase tracking-widest px-3 py-1 rounded-full bg-pink-100 border border-pink-200">Portfolio Showcase</span>
+                <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 mt-2">ผลงานเกมที่ฉันสร้าง 🎮</h2>
+                <p class="text-slate-500 text-sm sm:text-base mt-1">คัดสรรเกมสุดสร้างสรรค์จากการเรียนรู้อย่างตั้งใจในคาบเช้า</p>
+            </div>
+
+            <!-- Filter Categories -->
+            <div class="flex flex-wrap gap-2" id="category-filters">
+                <button data-filter="all" class="filter-btn active px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-gradient-to-r from-brand-blue to-brand-purple text-white shadow-md">
+                    ทั้งหมด
+                </button>
+                <button data-filter="Simulation Game" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-white text-slate-600 hover:bg-slate-100 border border-slate-200">
+                    Simulation
+                </button>
+                <button data-filter="Educational Game" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-white text-slate-600 hover:bg-slate-100 border border-slate-200">
+                    Educational
+                </button>
+            </div>
+        </div>
+
+        <!-- FEATURED GAME (Game #1: NongAxty Farm) -->
+        <div class="mb-12 game-card-item" data-category="Simulation Game">
+            <div class="relative glass-card rounded-4xl p-6 sm:p-8 shadow-xl border border-white/90 overflow-hidden bg-gradient-to-br from-emerald-500/10 via-teal-500/5 to-sky-500/10 group">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    
+                    <!-- Thumbnail / Interactive Visual -->
+                    <div class="lg:col-span-7 relative rounded-3xl overflow-hidden shadow-lg border border-white/60 bg-gradient-to-br from-emerald-400 via-teal-500 to-green-600 aspect-video flex flex-col items-center justify-center text-white p-6 group-hover:scale-[1.01] transition-transform duration-500">
+                        <!-- Playful Floating Elements inside Card -->
+                        <div class="absolute top-4 left-4 bg-white/20 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-white flex items-center gap-1.5 border border-white/30">
+                            <i class="fa-solid fa-star text-amber-300"></i> Featured Game
+                        </div>
+                        <div class="absolute bottom-4 right-4 bg-black/40 backdrop-blur-md px-3 py-1 rounded-full text-xs font-medium text-white">
+                            ปี 2567
+                        </div>
+
+                        <!-- Game Mascot Illustration Area -->
+                        <div class="text-center my-auto animate-float">
+                            <div class="w-24 h-24 sm:w-28 sm:h-28 mx-auto bg-white/20 backdrop-blur-md rounded-3xl flex items-center justify-center text-5xl sm:text-6xl shadow-inner border border-white/40 mb-3">
+                                🌾
+                            </div>
+                            <span class="font-bold text-lg tracking-wide text-emerald-100 block">NongAxty Farm</span>
+                            <span class="text-xs text-white/80">ปลูกผักสุดมันส์ ทำฟาร์มเพลินๆ</span>
+                        </div>
+
+                        <!-- Hover Overlay Effect -->
+                        <div class="absolute inset-0 bg-slate-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <a href="https://gemini.google.com/share/d/182WoQUWlnkQk3bRbqgVgvV79WACadla1?usp=sharing" target="_blank" rel="noopener font-en" class="px-6 py-3 rounded-2xl bg-white text-emerald-700 font-bold shadow-xl hover:scale-105 transition-transform flex items-center gap-2">
+                                <i class="fa-solid fa-circle-play text-xl text-emerald-600"></i> เล่นเกมตอนนี้ (Play Now)
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Details Area -->
+                    <div class="lg:col-span-5 flex flex-col gap-4">
+                        <div class="flex items-center gap-2">
+                            <span class="px-3 py-1 rounded-full bg-emerald-100 text-emerald-700 text-xs font-bold border border-emerald-200">
+                                Simulation Game
+                            </span>
+                            <span class="px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-xs font-medium">
+                                Year: ปี67
+                            </span>
+                        </div>
+
+                        <h3 class="text-2xl sm:text-3xl font-extrabold text-slate-900">
+                            NongAxty Farm
+                        </h3>
+
+                        <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+                            เกมปลูกผักสุดมันส์! สวมบทบาทเป็นเกษตรกรยุคใหม่ บริหารจัดการแปลงผัก รดน้ำ พรวนดิน และเก็บเกี่ยวผลผลิตอย่างเพลิดเพลิน สนุกกับระบบเกมที่เข้าใจง่ายและผ่อนคลาย!
+                        </p>
+
+                        <div class="p-4 rounded-2xl bg-white/80 border border-slate-200 text-xs text-slate-600 space-y-1.5">
+                            <div class="flex justify-between">
+                                <span class="font-semibold text-slate-700">ผู้สร้าง (Creator):</span>
+                                <span class="font-bold text-brand-purple">น้อง อต.</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="font-semibold text-slate-700">จุดเด่น:</span>
+                                <span>ปลูกผัก, สะสมผลผลิต, เล่นเพลิน</span>
+                            </div>
+                        </div>
+
+                        <div class="pt-2 flex items-center gap-3">
+                            <a href="https://gemini.google.com/share/d/182WoQUWlnkQk3bRbqgVgvV79WACadla1?usp=sharing" target="_blank" rel="noopener" class="flex-1 text-center py-3.5 px-6 rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-bold shadow-md hover:shadow-lg hover:scale-[1.02] transition-all flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-play"></i>
+                                <span>Play Game (เล่นเลย)</span>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- GRID GAMES (Game #2 & Game #3) -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8" id="games-grid">
+            
+            <!-- Game 2: ร้านอาหารเล็กๆของนายอั๋น กาฬสินธุ์ -->
+            <div class="game-card-item" data-category="Simulation Game">
+                <div class="glass-card rounded-3xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 border border-white/80 flex flex-col justify-between h-full group bg-gradient-to-br from-orange-500/5 via-amber-500/5 to-rose-500/5">
+                    <div>
+                        <!-- Thumbnail Header -->
+                        <div class="relative rounded-2xl overflow-hidden mb-5 aspect-video bg-gradient-to-tr from-orange-400 via-amber-500 to-rose-400 flex flex-col items-center justify-center text-white p-4 group-hover:scale-[1.02] transition-transform duration-300 shadow-sm">
+                            <div class="w-16 h-16 rounded-2xl bg-white/20 backdrop-blur-md flex items-center justify-center text-4xl mb-2 shadow-inner border border-white/30 animate-float">
+                                🍳
+                            </div>
+                            <span class="text-xs font-bold text-orange-100">Restaurant Simulation</span>
+                            <span class="absolute top-3 left-3 bg-white/30 backdrop-blur-md text-white text-[11px] font-bold px-2.5 py-0.5 rounded-full">
+                                Simulation Game
+                            </span>
+                            <span class="absolute bottom-3 right-3 bg-black/40 text-white text-[10px] px-2 py-0.5 rounded-md">
+                                ปี67
+                            </span>
+                        </div>
+
+                        <!-- Card Content -->
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-xs font-semibold text-slate-400">Creator: น้อง อต.</span>
+                            <span class="text-xs font-bold text-orange-600 bg-orange-100 px-2.5 py-0.5 rounded-full">ปี 2567</span>
+                        </div>
+
+                        <h3 class="text-xl font-extrabold text-slate-800 mb-2 group-hover:text-orange-600 transition-colors">
+                            ร้านอาหารเล็กๆของนายอั๋น กาฬสินธุ์
+                        </h3>
+
+                        <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                            ร้านอาหารแห่งความสุขเปิดโดยเชฟที่ชื่อว่า อั๋น กาฬสินธุ์ ร่วมรังสรรค์เมนูแสนอร่อย บริหารจัดการร้านอาหารเพื่อสร้างรอยยิ้มให้กับลูกค้าทุกคน!
+                        </p>
+                    </div>
+
+                    <div class="pt-4 border-t border-slate-100 flex items-center gap-3">
+                        <a href="https://gemini.google.com/share/d/1_PH6h19eSb1WDVkrpD0QFXTngh8VcHTy?usp=sharing" target="_blank" rel="noopener" class="w-full text-center py-3 px-4 rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 text-white font-bold text-sm shadow-md hover:shadow-orange-200 hover:scale-[1.02] transition-all flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-gamepad"></i>
+                            <span>Play Game (เล่นเกม)</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Game 3: จับคู่จำนวนจริงม.4 โดยใช้ลิ้น -->
+            <div class="game-card-item" data-category="Educational Game">
+                <div class="glass-card rounded-3xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 border border-white/80 flex flex-col justify-between h-full group bg-gradient-to-br from-indigo-500/5 via-purple-500/5 to-pink-500/5">
+                    <div>
+                        <!-- Thumbnail Header -->
+                        <div class="relative rounded-2xl overflow-hidden mb-5 aspect-video bg-gradient-to-tr from-purple-500 via-indigo-500 to-pink-500 flex flex-col items-center justify-center text-white p-4 group-hover:scale-[1.02] transition-transform duration-300 shadow-sm">
+                            <div class="w-16 h-16 rounded-2xl bg-white/20 backdrop-blur-md flex items-center justify-center text-4xl mb-2 shadow-inner border border-white/30 animate-float">
+                                👅
+                            </div>
+                            <span class="text-xs font-bold text-purple-100">Math Puzzle & Fun</span>
+                            <span class="absolute top-3 left-3 bg-white/30 backdrop-blur-md text-white text-[11px] font-bold px-2.5 py-0.5 rounded-full">
+                                Educational Game
+                            </span>
+                            <span class="absolute bottom-3 right-3 bg-black/40 text-white text-[10px] px-2 py-0.5 rounded-md">
+                                ม.4
+                            </span>
+                        </div>
+
+                        <!-- Card Content -->
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-xs font-semibold text-slate-400">Creator: น้อง อต.</span>
+                            <span class="text-xs font-bold text-purple-600 bg-purple-100 px-2.5 py-0.5 rounded-full">คณิตศาสตร์</span>
+                        </div>
+
+                        <h3 class="text-xl font-extrabold text-slate-800 mb-2 group-hover:text-purple-600 transition-colors">
+                            จับคู่จำนวนจริงม.4 โดยใช้ลิ้น
+                        </h3>
+
+                        <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                            เกมที่ต้องการใช้ลิ้นตอบคำถาม! ท้าทายความคิดและรอยยิ้ม เรียนรู้เรื่องจำนวนจริงระดับชั้นมัธยมศึกษาปีที่ 4 แบบแปลกใหม่ ไม่มีใครเหมือน!
+                        </p>
+                    </div>
+
+                    <div class="pt-4 border-t border-slate-100 flex items-center gap-3">
+                        <a href="https://gemini.google.com/share/d/1Z8lTZEnTqkRhIfGYWVBPJB5TVUl99zE7?usp=sharing" target="_blank" rel="noopener" class="w-full text-center py-3 px-4 rounded-xl bg-gradient-to-r from-purple-600 to-brand-pink text-white font-bold text-sm shadow-md hover:shadow-purple-200 hover:scale-[1.02] transition-all flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                            <span>Play Game (ลองเล่นเลย)</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- 3.3 Footer Section (Multi-column Footer with Social Links) -->
+    <footer id="contact" class="mt-20 pt-16 pb-12 bg-slate-900 text-white relative overflow-hidden rounded-t-[2.5rem]">
+        
+        <!-- Glow Overlay inside Footer -->
+        <div class="absolute top-0 right-0 w-96 h-96 bg-brand-purple/20 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute bottom-0 left-0 w-96 h-96 bg-brand-blue/20 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-slate-800">
+                
+                <!-- Column 1: Creator Bio & Name -->
+                <div class="lg:col-span-5 space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-blue via-brand-purple to-brand-pink p-[2px]">
+                            <div class="w-full h-full bg-slate-900 rounded-[10px] flex items-center justify-center">
+                                <span class="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-brand-blue to-brand-pink text-lg">AT</span>
+                            </div>
+                        </div>
+                        <span class="text-xl font-bold font-en tracking-tight text-white">NongAxty Studio</span>
+                    </div>
+
+                    <p class="text-slate-400 text-sm leading-relaxed max-w-sm">
+                        พอร์ตโฟลิโอแสดงผลงานเกมโดย <span class="text-white font-semibold">น้อง อต. (ตี้ราม2)</span> มัธยมศึกษาปีที่ 5 มีความมุ่งมั่นและเป้าหมายสู่ <span class="text-brand-pink font-semibold">ธรรมศาสตร์รังสิต</span>
+                    </p>
+
+                    <div class="flex items-center gap-2 text-xs text-slate-400 bg-slate-800/80 p-3 rounded-xl border border-slate-700/60 w-fit">
+                        <i class="fa-solid fa-envelope text-brand-sky"></i>
+                        <span>Email: <a href="mailto:38252@bpk.ac.th" class="text-slate-200 hover:text-brand-sky underline transition-colors">38252@bpk.ac.th</a></span>
+                    </div>
+                </div>
+
+                <!-- Column 2: Quick Links -->
+                <div class="lg:col-span-3 space-y-3">
+                    <h4 class="text-sm font-bold uppercase tracking-wider text-slate-300">Quick Navigation</h4>
+                    <ul class="space-y-2 text-sm text-slate-400">
+                        <li><a href="#about" class="hover:text-brand-pink transition-colors flex items-center gap-2"><i class="fa-solid fa-chevron-right text-xs text-brand-purple"></i> เกี่ยวกับฉัน (About Me)</a></li>
+                        <li><a href="#skills" class="hover:text-brand-pink transition-colors flex items-center gap-2"><i class="fa-solid fa-chevron-right text-xs text-brand-purple"></i> ทักษะ (Skills)</a></li>
+                        <li><a href="#games" class="hover:text-brand-pink transition-colors flex items-center gap-2"><i class="fa-solid fa-chevron-right text-xs text-brand-purple"></i> เกมทั้งหมด (My Games)</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Social Networks & External Links -->
+                <div class="lg:col-span-4 space-y-4">
+                    <h4 class="text-sm font-bold uppercase tracking-wider text-slate-300">Connect & Follow Me</h4>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                        
+                        <!-- Facebook -->
+                        <a href="https://www.facebook.com/share/1C7P6PJpYF/" target="_blank" rel="noopener" class="flex items-center gap-3 p-2.5 rounded-xl bg-slate-800/80 hover:bg-blue-600/20 border border-slate-700/60 hover:border-blue-500/50 text-slate-300 hover:text-white transition-all group">
+                            <i class="fa-brands fa-facebook text-xl text-blue-500 group-hover:scale-110 transition-transform"></i>
+                            <span class="text-xs font-medium">Facebook</span>
+                        </a>
+
+                        <!-- Instagram Main -->
+                        <a href="https://www.instagram.com/axty_kung?stkn=MW1hZDRnZWhlNGloag==" target="_blank" rel="noopener" class="flex items-center gap-3 p-2.5 rounded-xl bg-slate-800/80 hover:bg-pink-600/20 border border-slate-700/60 hover:border-pink-500/50 text-slate-300 hover:text-white transition-all group">
+                            <i class="fa-brands fa-instagram text-xl text-pink-500 group-hover:scale-110 transition-transform"></i>
+                            <span class="text-xs font-medium">@axty_kung</span>
+                        </a>
+
+                        <!-- TikTok -->
+                        <div class="flex items-center gap-3 p-2.5 rounded-xl bg-slate-800/80 border border-slate-700/60 text-slate-300 group">
+                            <i class="fa-brands fa-tiktok text-xl text-cyan-400 group-hover:scale-110 transition-transform"></i>
+                            <span class="text-xs font-medium">TikTok: <strong class="text-white">sxmerj3</strong></span>
+                        </div>
+
+                        <!-- Instagram Secondary -->
+                        <a href="https://www.instagram.com/sxmerj?stkn=cjk4emk3NXoyanNt" target="_blank" rel="noopener" class="flex items-center gap-3 p-2.5 rounded-xl bg-slate-800/80 hover:bg-purple-600/20 border border-slate-700/60 hover:border-purple-500/50 text-slate-300 hover:text-white transition-all group">
+                            <i class="fa-brands fa-instagram text-xl text-purple-400 group-hover:scale-110 transition-transform"></i>
+                            <span class="text-xs font-medium">@sxmerj</span>
+                        </a>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Bottom Copyright & Credits -->
+            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+                <p>© 2026 Nong Axty Dev (วสุรมย์ บุญประกอบ). All rights reserved.</p>
+                <p class="flex items-center gap-1">
+                    Made with <i class="fa-solid fa-heart text-pink-500"></i> & Creative Energy in Morning Class
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Scripts -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Mobile Menu Toggle Logic
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuIcon = document.getElementById('menu-icon');
+
+            if (mobileMenuBtn && mobileMenu) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                    if (mobileMenu.classList.contains('hidden')) {
+                        menuIcon.className = 'fa-solid fa-bars text-xl';
+                    } else {
+                        menuIcon.className = 'fa-solid fa-xmark text-xl';
+                    }
+                });
+
+                // Close menu when clicking mobile links
+                document.querySelectorAll('.mobile-link').forEach(link => {
+                    link.addEventListener('click', () => {
+                        mobileMenu.classList.add('hidden');
+                        menuIcon.className = 'fa-solid fa-bars text-xl';
+                    });
+                });
+            }
+
+            // Game Category Filtering Logic
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const gameCards = document.querySelectorAll('.game-card-item');
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Remove active state from all
+                    filterBtns.forEach(b => {
+                        b.classList.remove('active', 'bg-gradient-to-r', 'from-brand-blue', 'to-brand-purple', 'text-white', 'shadow-md');
+                        b.classList.add('bg-white', 'text-slate-600');
+                    });
+
+                    // Add active state to clicked
+                    btn.classList.add('active', 'bg-gradient-to-r', 'from-brand-blue', 'to-brand-purple', 'text-white', 'shadow-md');
+                    btn.classList.remove('bg-white', 'text-slate-600');
+
+                    const filterValue = btn.getAttribute('data-filter');
+
+                    gameCards.forEach(card => {
+                        const category = card.getAttribute('data-category');
+                        if (filterValue === 'all' || category === filterValue) {
+                            card.style.display = 'block';
+                            card.style.opacity = '0';
+                            setTimeout(() => {
+                                card.style.opacity = '1';
+                                card.style.transition = 'opacity 0.4s ease';
+                            }, 50);
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+
+            // Smooth Scroll Header Effect
+            const mainHeader = document.getElementById('main-header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 30) {
+                    mainHeader.classList.add('py-1');
+                    mainHeader.classList.remove('py-3');
+                } else {
+                    mainHeader.classList.add('py-3');
+                    mainHeader.classList.remove('py-1');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
